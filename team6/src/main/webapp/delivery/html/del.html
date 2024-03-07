@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>刪除訂單資料</title>
+<style>
+a, a:visited {
+	text-decoration: none;
+	color: blue;
+}
+</style>
+</head>
+<body style="background-color: #fdf5e6">
+<div align="center">
+	<h2>刪除外送訂單資料</h2>
+	<form method="post" action="/team6/DeliveryServlet">
+		輸入訂單編號 : <input type="text" name="id" />
+		<button name="message" value="del">刪除</button>
+		<br>
+	</form>
+	<button id="home">回首頁</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script> 
+$(document).ready(function(){
+		
+	$("#home").click(function(){
+	    let homeURL = "index.html";
+	    window.location.href = homeURL;
+	});
+});
+</script>
+		
+</body>
+</html>

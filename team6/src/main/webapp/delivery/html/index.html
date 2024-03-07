@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>員工資料管理系統</title>
+<style>
+body {
+	text-align: center;
+}
+
+.form {
+	display: inline-block
+}
+</style>
+</head>
+<body style="background-color: #fdf5e6">
+
+	<h2>員工資料管理系統</h2>
+	
+	<form method="post" action="/team6/DeliveryServlet">
+		<button name="message" value="Get">查詢全部</button>
+	</form>
+		<button id="one">查詢單筆</button>
+	<br>
+		<button id="del">刪除資料</button>
+	<br>
+		<button id="upd">修改資料</button>
+	<br>
+		<button id="ins">新增資料</button>
+
+	<form method="post" action="/team6/DeliveryServlet">
+		<label for="search">姓名:</label> <input type="text" id="search"
+			name="cname">
+		<button name="message" value="GetName" type="submit">查詢</button>
+	</form>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+$(document).ready(function(){
+    
+	$("#home").click(function(){
+    	let homeURL = "index.html";
+    	window.location.href = homeURL;
+    });
+	$("#ins").click(function(){
+    	let insURL = "insert.html";
+    	window.location.href = insURL;
+    });
+	$("#upd").click(function(){
+    	let updURL = "upd.html";
+    	window.location.href = updURL;
+    });
+    
+    $("#one").click(function(){
+        let oneURL = "Getone.html";
+        window.location.href = oneURL;
+    });
+    $("#del").click(function(){
+        let delURL = "del.html"; 
+        window.location.href = delURL;
+    });
+    
+});
+</script>
+</body>
+</html>

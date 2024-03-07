@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改訂單資料</title>
+<style>
+a, a:visited {
+	text-decoration: none;
+	color: blue;
+}
+
+body {
+	text-align: center;
+}
+
+button {
+	margin-right: 20px;
+}
+</style>
+</head>
+<body style="background-color: #fdf5e6">
+	<h2>修改訂單資料</h2>
+	<form method="post" action="/team6/DeliveryServlet">
+		輸入訂單編號 : <input type="text" name="id" />
+		<p>
+			<button type="submit" name="message" value="upd">確定</button>	
+	</form>
+			<button id="home">回首頁</button>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script> 
+$(document).ready(function(){
+		
+	$("#home").click(function(){
+	    let homeURL = "index.html";
+	    window.location.href = homeURL;
+	});
+});
+</script>
+		
+
+</body>
+</html>

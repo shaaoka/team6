@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增外送訂單</title>
+</head>
+<body style="background-color: #fdf5e6">
+<div align="center">
+<h2>外送訂單</h2>
+<form method="post" action="/team6/DeliveryServlet">
+<table>
+<tr>
+<td>顧客姓名 :
+<td><input type="text" name="cname">
+<tr>
+<td>電話 :
+<td><input type="text" name="phone">
+<tr>
+<td>產品 :
+<td><input type="text" name="product">
+<tr>
+<td>價格 :
+<td><input type="number" name="price">
+地址 :
+   	<select name="address"> 
+	    <option value="中原大學">中原大學</option>
+	    <option value="健行科技大學">健行科技大學</option>
+	    <option value="中壢運動園區">中壢運動園區</option>
+	    <option value="中壢火車站">中壢火車站</option>
+	    <option value="內壢火車站">內壢火車站</option>
+	    <option value="家樂福 中壢店">家樂福 中壢店</option>
+	    <option value="家樂福 內壢店">家樂福 內壢店</option>
+	    <option value="桃園市立龍興國民中學">桃園市立龍興國民中學</option>
+	    <option value="莒光環保公園">莒光環保公園</option>
+	    <option value="天晟醫院">天晟醫院</option>
+   	</select>
+</table>
+	<button type="submit" name="message" value="ins">確定</button>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>查詢單筆外送訂單</title>
+<style>
+body {
+	text-align: center;
+}
+
+</style>
+</head>
+<body style="background-color: #fdf5e6">
+	<h2>查詢單筆外送訂單</h2>
+	<form method="post" action="/team6/DeliveryServlet">
+		輸入訂單編號 : <input type="text" name="id" />
+		<button name="message" value="Getone">查詢</button>
+	</form>
+	<button id="home">回首頁</button>
+	
+	<form method="post" action="/team6/DeliveryServlet">
+		<button name="message" value="Get">查詢全部</button>
+	</form>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+$(document).ready(function(){
+		
+	$("#home").click(function(){
+	    let homeURL = "index.html";
+	    window.location.href = homeURL;
+	});
+});
+	
+
+</script>
+</body>
+</html>
