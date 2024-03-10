@@ -16,7 +16,7 @@ public class JDBCutil {
 		Connection connection = null;
 		try {
 			Context context = new InitialContext();
-			DataSource dataSource = (DataSource)context.lookup("java:/comp/env/jdbc/servdb");
+			DataSource dataSource = (DataSource)context.lookup("java:/comp/env/jdbc/team6");
 			connection = dataSource.getConnection();
 			boolean status = !connection.isClosed();
 			System.out.println("連線狀態:" + status);
