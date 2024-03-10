@@ -5,20 +5,27 @@
 
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="refresh" content="3 ;url=/team6/delivery/html/index.html">
 <title>沒有資料</title>
 <style>
-a, a:visited {
-	text-decoration: none;
-	color: blue;
-}
 </style>
 </head>
 
 <body style="background-color: #fdf5e6">
 	<div align="center">
 		<h2>找不到資料</h2>		
-		<a href="/team6/delivery/html/index.html">回首頁</a>
+		<button id="home">回首頁</button>
 	</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+$(document).ready(function(){
+    
+	$("#home").click(function(){
+    	let homeURL = "/team6/delivery/html/index.html";
+    	window.location.href = homeURL;
+    
+	});
+});
 </body>
 
 </html>

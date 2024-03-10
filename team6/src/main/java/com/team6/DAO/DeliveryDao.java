@@ -21,7 +21,7 @@ import com.team6.util.JDBCutil;
 
 public class DeliveryDao {
 	Connection connection;
-	 //新增
+	 //前台新增
 		public boolean Insertd(DeliveryBean deliveryBean) {
 		Connection connection = JDBCutil.getConnection();
 		String sql = "insert into delivery ( cname,phone,product,price,address)  VALUES (?,?,?,?,?)";
@@ -47,32 +47,65 @@ public class DeliveryDao {
 		}
 			return isSuccess;
 	}
-
-		public boolean Update(DeliveryBean deliveryBean) {
-			Connection connection = JDBCutil.getConnection();
-			String sql = "UPDATE delivery SET cname = ?,phone = ?,product = ?,price = ?,address = ? WHERE id = ?";
-			PreparedStatement preparedStatement = null;
-			boolean isSuccess = false;
-			try {
-				preparedStatement = connection.prepareStatement(sql);
-				preparedStatement.setInt(6, deliveryBean.getId());
-				preparedStatement.setString(1, deliveryBean.getCname());
-				preparedStatement.setString(2, deliveryBean.getPhone());
-				preparedStatement.setString(3, deliveryBean.getProduct());
-				preparedStatement.setInt(4, deliveryBean.getPrice());
-				preparedStatement.setString(5, deliveryBean.getAddress());
-				preparedStatement.execute();
+		
+	//後台新增
+		public boolean Insert(DeliveryBean deliveryBean) {
+		Connection connection = JDBCutil.getConnection();
+		String sql = "insert into delivery(cname,phone,product,num,price,ename,address,time) VALUES (?,?,?,?,?,?,?,?)";
+		PreparedStatement stm = null;
+			
+		boolean isSuccess = false;
+			
+	try {
+		stm = connection.prepareStatement(sql);
+		stm.setString(1, deliveryBean.getCname());
+		stm.setString(2, deliveryBean.getPhone());
+		stm.setString(3, deliveryBean.getProduct());
+		stm.setInt(4, deliveryBean.getNum());
+		stm.setInt(5, deliveryBean.getPrice());
+		stm.setString(6, deliveryBean.getEname());
+		stm.setString(7, deliveryBean.getAddress());
+		stm.setInt(8, deliveryBean.getTime());
+		stm.execute();
 				
-				isSuccess = true;
+		isSuccess = true;
 				
-			} catch (SQLException e) {
-			System.out.println("b");
-				e.printStackTrace();
-			}finally {
-				JDBCutil.closeResourse(connection, preparedStatement);
-			}
-			return isSuccess;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCutil.closeResourse(connection,stm);
 		}
+			return isSuccess;
+	}
+	
+	//修改
+	public boolean Update(DeliveryBean deliveryBean) {
+		Connection connection = JDBCutil.getConnection();
+		String sql = "UPDATE delivery SET cname = ?,phone = ?,product = ?,price = ?,ename = ? ,address = ?,time = ?WHERE id = ?";
+		PreparedStatement preparedStatement = null;
+		boolean isSuccess = false;
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(8, deliveryBean.getId());
+			preparedStatement.setString(1, deliveryBean.getCname());
+			preparedStatement.setString(2, deliveryBean.getPhone());
+			preparedStatement.setString(3, deliveryBean.getProduct());
+			preparedStatement.setInt(4, deliveryBean.getPrice());
+			preparedStatement.setString(5, deliveryBean.getEname());
+			preparedStatement.setString(6, deliveryBean.getAddress());
+			preparedStatement.setInt(7, deliveryBean.getTime());
+			preparedStatement.execute();
+			
+			isSuccess = true;
+			
+		} catch (SQLException e) {
+		System.out.println("b");
+			e.printStackTrace();
+		}finally {
+			JDBCutil.closeResourse(connection, preparedStatement);
+		}
+		return isSuccess;
+	}
 
 	// 刪除
 	public boolean Deleted(int id) {
@@ -111,9 +144,11 @@ public class DeliveryDao {
 				deliveryBean.setCname(rs.getString("cname"));
 				deliveryBean.setPhone(rs.getString("phone"));
 				deliveryBean.setProduct(rs.getString("product"));
+				deliveryBean.setNum(rs.getInt("num"));
+				deliveryBean.setEname(rs.getString("ename"));
 				deliveryBean.setPrice(rs.getInt("price"));
 				deliveryBean.setAddress(rs.getString("address"));
-				deliveryBean.setTime(rs.getString("time"));
+				deliveryBean.setTime(rs.getInt("time"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,8 +175,10 @@ public class DeliveryDao {
 				deliveryBean.setCname(rs.getString("cname"));
 				deliveryBean.setPhone(rs.getString("phone"));
 				deliveryBean.setProduct(rs.getString("product"));
+				deliveryBean.setNum(rs.getInt("num"));
+				deliveryBean.setEname(rs.getString("ename"));
 				deliveryBean.setAddress(rs.getString("address"));
-				deliveryBean.setTime(rs.getString("time"));
+				deliveryBean.setTime(rs.getInt("time"));
 				deliveryBeans.add(deliveryBean);
 			}
 
@@ -173,8 +210,11 @@ public class DeliveryDao {
 				deliveryBean.setCname(rs.getString("cname"));
 				deliveryBean.setPhone(rs.getString("phone"));
 				deliveryBean.setProduct(rs.getString("product"));
+				deliveryBean.setNum(rs.getInt("num"));
+				deliveryBean.setPrice(rs.getInt("price"));
+				deliveryBean.setEname(rs.getString("ename"));
 				deliveryBean.setAddress(rs.getString("address"));
-				deliveryBean.setTime(rs.getString("time"));
+				deliveryBean.setTime(rs.getInt("time"));
 				deliveryBeans.add(deliveryBean);
 			}
 		} catch (SQLException e) {

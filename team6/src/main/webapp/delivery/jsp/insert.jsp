@@ -6,12 +6,9 @@
 
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="refresh" content="3 ;url=/team6/delivery/html/index.html">
 <title>新增狀態</title>
 <style>
-a,a:visited {
-	text-decoration: none;
-	color:blue;
-}
 </style>
 </head>
 
@@ -19,41 +16,17 @@ a,a:visited {
 	<div align="center">
 
 	<h2>新增成功</h2>
-	<jsp:useBean id="delivery" scope="request"
-		class="com.team6.bean.DeliveryBean" />
-	<table>
-		<tr>
-			<td>訂單編號</td>
-			<td><input type="text" disabled value="<%=delivery.getId()%>"></td>
-		</tr>
-		<tr>
-			<td>顧客姓名</td>
-			<td><input type="text" disabled value="<%=delivery.getCname()%>"></td>
-		</tr>
-		<tr>
-			<td>電話</td>
-			<td><input type="text" disabled
-				value="<%=delivery.getPhone()%>"></td>
-		</tr>
-		<tr>
-			<td>產品</td>
-			<td><input type="text" disabled
-				value="<%=delivery.getProduct()%>"></td>
-		</tr>
-		<tr>
-			<td>價格</td>
-			<td><input type="text" disabled
-				value="<%=delivery.getId()%>"></td>
-		</tr>
-		<tr>
-			<td>地址</td>
-			<td><input type="text" disabled value="<%=delivery.getAddress()%>"></td>
-		</tr>
-
-	</table>
-	<p>
-		<a href="/team6/delivery/html/index.html">回首頁</a>
+		<button id="home" class="btn btn-secondary">回首頁</button>
 	</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script> 
+$(document).ready(function(){
+		
+	$("#home").click(function(){
+	    let homeURL = "/team6/delivery/html/index.html";
+	    window.location.href = homeURL;
+	});
+});
+</script>
 </body>
-
 </html>

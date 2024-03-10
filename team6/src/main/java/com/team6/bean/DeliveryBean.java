@@ -8,19 +8,24 @@ public class DeliveryBean implements java.io.Serializable {
 	private String cname;
 	private String phone;
 	private String product;
-	private int price;	
+	private int num;
+	private int price;
+	private String ename;
 	private String address;
-	private String time;
+	private int time;
 	
-	public DeliveryBean(int id, String cname, String phone, String product, int price, String address, String time) {
+	public DeliveryBean(int id, String cname, String phone, String product,int num, int price,String ename, String address, int time) {
         this.id = id;
         this.cname = cname;
         this.phone = phone;
         this.product = product;
+        this.num = num;
         this.price = price;
+        this.ename = ename;
         this.address = address;
         this.time = time;
     }
+	
 	public DeliveryBean() {
     
 	}
@@ -31,7 +36,10 @@ public class DeliveryBean implements java.io.Serializable {
 	public String getProduct() {return product;}
 	public int getPrice() {	return price;}
 	public String getAddress() {return address;}
-	public String getTime() {return time;}
+	public int getTime() {return time;}
+	public int getNum() {return num;}
+	public String getEname() {return ename;}
+	
 	// set
 	public void setId(int id) {this.id = id;}
 	public void setCname(String cname) {this.cname = cname;}
@@ -39,7 +47,10 @@ public class DeliveryBean implements java.io.Serializable {
 	public void setProduct(String product) {this.product = product;}
 	public void setPrice(int price) {this.price = price;}
 	public void setAddress(String address) {this.address = address;}
-	public void setTime(String time) {this.time = time;}
+	public void setTime(int time) {this.time = time;}
+	public void setEname(String ename) {this.ename = ename;}
+	public void setNum(int num) {this.num = num;}
+	
 	
 	
 }

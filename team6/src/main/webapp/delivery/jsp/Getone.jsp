@@ -3,20 +3,20 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>單筆訂單資料</title>
 <style>
-a, a:visited {
-	text-decoration: none;
-	color: blue;
-	margin-right: 20px;
+body {
+	text-align: center;
+	;
 }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
-
-<body style="background-color: #fdf5e6">
+<body style="background-color : #fdf5e6">
 	<div align="center">
 		<h2>外送訂單</h2>
 		<jsp:useBean id="deliveryBean" scope="request"
@@ -38,24 +38,50 @@ a, a:visited {
 					value="<%=deliveryBean.getPhone()%>"></td>
 			</tr>
 			<tr>
-				<td>商品</td>
+				<td>產品</td>
 				<td><input type="text" disabled
 					value="<%=deliveryBean.getProduct()%>"></td>
 			</tr>
 			<tr>
-				<td>地址</td>
+				<td>數量</td>
+				<td><input type="text" disabled
+					value="<%=deliveryBean.getNum()%>"></td>
+			</tr>
+			<tr>
+				<td>價格</td>
+				<td><input type="text" disabled
+					value="<%=deliveryBean.getPrice()%>"></td>
+			</tr>
+			<tr>
+				<td>外送員工</td>
+				<td><input type="text" disabled
+					value="<%=deliveryBean.getEname()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>外送地址</td>
 				<td><input type="text" disabled
 					value="<%=deliveryBean.getAddress()%>"></td>
 			</tr>
 			<tr>
-				<td>時間</td>
+				<td>外送時間</td>
 				<td><input type="text" disabled
-					value="<%=deliveryBean.getTime()%>"></td>
+					value="<%=deliveryBean.getTime()%>分鐘"></td>
 			</tr>
 		</table>
-		<p>
-			<a href="/team6/delivery/html/index.html">回首頁</a>
-	</div>
+		<br>
+		<button id="home">回首頁</button>
+		</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+$(document).ready(function(){
+    
+	$("#home").click(function(){
+    	let homeURL = "/team6/delivery/html/index.html";
+    	window.location.href = homeURL;
+    
+	});
+});
+</script>
 </body>
-
 </html>

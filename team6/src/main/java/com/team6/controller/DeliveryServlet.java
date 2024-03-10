@@ -1,9 +1,6 @@
 package com.team6.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,12 +27,17 @@ public class DeliveryServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String cname = request.getParameter("cname");
-		String product = request.getParameter("product");
-		String address = request.getParameter("address");
 		String phone = request.getParameter("phone");
-		String price = request.getParameter("price");
+		String product = request.getParameter("product");
 		
-		System.out.printf("id:%s,cname:%s,product:%s,address:%s,phone:%s,price:%s%n",id,cname,product,address,phone,price);
+		String price = request.getParameter("price");
+		String ename = request.getParameter("ename");
+		String address = request.getParameter("address");
+		String time = request.getParameter("time");
+		//message 要執行的訊息
+		String message = request.getParameter("message");
+		
+		System.out.printf("id:%s%n,cname:%s%n,product:%s%n,address:%s%n,phone:%s%n,price:%s%n,ename:%s%n,message:%s%n",id,cname,product,address,phone,price,ename,time,message);
 		
 		DeliveryBean deliveryBean = new DeliveryBean();
 		if(id != null) {
@@ -43,23 +45,24 @@ public class DeliveryServlet extends HttpServlet {
 		}
 		deliveryBean.setCname(cname);
 		deliveryBean.setPhone(phone);
-		deliveryBean.setProduct(product);
-		deliveryBean.setAddress(address);
+		deliveryBean.setProduct(product);		
 		if (price != null) {
 			deliveryBean.setPrice(Integer.parseInt(price));
 		}
-//		deliveryBean.setPrice(Integer.parseInt(price));
-//		deliveryBean.setTime(Integer.parseInt(time));
-
-		String message = request.getParameter("message");
+		deliveryBean.setAddress(address);
+		deliveryBean.setEname(ename);
+		if (time != null) {
+			deliveryBean.setTime(Integer.parseInt(time));
+		}
 		DeliveryDao deliveryDao = new DeliveryDao();
 
 		switch (message) {
 
 		case "ins": { 
-			boolean isSccuess = deliveryDao.Insertd(deliveryBean);
+			boolean isSccuess = deliveryDao.Insert(deliveryBean);
 			System.out.println(isSccuess);
 			if (isSccuess) {
+			
 				request.getRequestDispatcher("/delivery/jsp/insert.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("/delivery/jsp/Error.jsp").forward(request, response);
@@ -73,11 +76,10 @@ public class DeliveryServlet extends HttpServlet {
 			request.getRequestDispatcher("/delivery/jsp/DoUpdate.jsp").forward(request, response);
 			break;
 		}
-		
 		case "Update": { 
 			boolean isSccuess = deliveryDao.Update(deliveryBean);
 			if(isSccuess) {
-				request.getRequestDispatcher("/delivery/html/index.html").forward(request, response);
+				request.getRequestDispatcher("/delivery/jsp/update.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("/delivery/jsp/Error.jsp").forward(request, response);
 			}	
@@ -105,7 +107,6 @@ public class DeliveryServlet extends HttpServlet {
 		}
 		
 		case "Getone": {
-			System.out.println(id);
 			if(id.equals("")) {
 				request.getRequestDispatcher("/delivery/jsp/Fail.jsp").forward(request, response);
 			} else {
